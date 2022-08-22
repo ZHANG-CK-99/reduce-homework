@@ -9,15 +9,10 @@
   <body>
     <script>
       function ParseUrlSearch(url) {
-        //  return url.replace(/(^\?)|(&$)/g, "").split("&").reduce((t, v) => {
-        //      const [key, val] = v.split("=");
-        //      t[key] = decodeURIComponent(val);
-        //      return t;
-        //  },{});
         let result = url.replace(/http:\/\/www.baidu.com\/\?/, "");
         // const obj = {...result}
         let newresult = result.replaceAll("&", "=").split("=");
-
+        
         let obj = {};
         newresult.reduce((pre, cur, index, arr) => {
           index++;
@@ -28,7 +23,6 @@
       }
 
       let url = "http://www.baidu.com/?name=zhangsan&age=18&sex=nan#";
-      // //  ParseUrlSearch('name=zhangsan&age=18&sex=nan'); // { age: "25", name: "TYJ" }
       ParseUrlSearch(url);
     </script>
   </body>
