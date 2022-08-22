@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function ParseUrlSearch(url) {
+        //  return url.replace(/(^\?)|(&$)/g, "").split("&").reduce((t, v) => {
+        //      const [key, val] = v.split("=");
+        //      t[key] = decodeURIComponent(val);
+        //      return t;
+        //  },{});
+        let result = url.replace(/http:\/\/www.baidu.com\/\?/, "");
+        // const obj = {...result}
+        let newresult = result.replaceAll("&", "=").split("=");
+
+        let obj = {};
+        newresult.reduce((pre, cur, index, arr) => {
+          index++;
+          return (obj[arr[index - 2]] = arr[index - 1]);
+        });
+        console.log(newresult);
+        console.log(obj);
+      }
+
+      let url = "http://www.baidu.com/?name=zhangsan&age=18&sex=nan#";
+      // //  ParseUrlSearch('name=zhangsan&age=18&sex=nan'); // { age: "25", name: "TYJ" }
+      ParseUrlSearch(url);
+    </script>
+  </body>
+</html>
